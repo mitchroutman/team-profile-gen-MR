@@ -1,3 +1,14 @@
 :root{
-    background-color: antiquewhite;
+    background-color: whitesmoke;
+}
+
+header {
+    height: 200px;
+    width: auto;
+    background-color: red;
+    color: white;
+}
+
+h1 {
+    text-align: center;
 }
