@@ -9,79 +9,27 @@ const Team = [];
 //
 
 //questions manager
-const questionBank = () => {
-inquirer.prompt([
-    {
-        type: 'list',
-        name: 'employee type',
-        message: 'What kind of employee do you want to add?',
-        choices: ['Manager', 'Engineer', 'Intern']
-    },
-    {
-        type: 'input',
-        name: 'name',
-        message: "What is your name?"
-    },
-    {   
-        type: 'input',
-        name: 'email',
-        message: 'What is your email?'
-    },
-    {
-        type: 'input',
-        name: 'office',
-        message: 'What is your office number?'
-    },
-])}
-
-//questions engineer
-const questionBank = () => {
-    inquirer.prompt([
+const mainMenu = () => {
+    return inquirer.prompt([
         {
             type: 'list',
-            name: 'employee type',
-            message: 'What kind of employee do you want to add?',
+            name: 'selector',
+            message: 'What kind of employeed do you want to add?',
             choices: ['Manager', 'Engineer', 'Intern']
-        },
-        {
-            type: 'input',
-            name: 'name',
-            message: "What is your name?"
-        },
-        {   
-            type: 'input',
-            name: 'email',
-            message: 'What is your email?'
-        },
-        {
-            type: 'input',
-            name: 'github',
-            message: 'What is your GitHub?'
-        },
-    ])}
-
-//questions intern
-const questionBank = () => {
-    inquirer.prompt([
-        {
-            type: 'list',
-            name: 'employee type',
-            message: 'What kind of employee do you want to add?',
-            choices: ['Manager', 'Engineer', 'Intern']
-        },
-        {
-            type: 'input',
-            name: 'name',
-            message: "What is your name?"
-        },
-        {   
-            type: 'input',
-            name: 'email',
-            message: 'What is your email?'
-        },
-        {
-            type: 'input',
-            name: 'school',
-            message: 'What is your school?'
-        },
-    ])}
+        }])
+        .then(userSelect => {
+            switch (userSelect.menu) {
+                case "Manager":
+                    promptManager();
+                    break;
+                case "Engineer":
+                    promptEngineer();
+                    break;
+                case "Intern":
+                    promptIntern();
+                    break;
+                default:
+                    makeTeam();
+            }
+        })
+}
