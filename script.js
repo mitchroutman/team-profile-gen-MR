@@ -22,7 +22,9 @@ function mainMenu() {
                 newManager()
             } else if (selector === "Engineer") {
                 newEngineer()
-            } else (newInter)
+            } else (selector === "Intern") {
+                newIntern()
+            }
         })
     }
 
@@ -104,7 +106,7 @@ const newEngineer = () => {
             message: 'What is your Engineers GitHub?'
         }
     ]).then(response => {
-        const engineer = new Engineer(response.id, response.name, respose.email, respose.officenumber)
+        const engineer = new Engineer(response.id, response.name, response.email, response.git)
         Team.push(engineer);
         mainMenu();
     })
@@ -133,7 +135,7 @@ const newIntern = () => {
             message: 'What is your Interns school?'
         }
     ]).then(response => {
-        const intern = new Engineer(response.id, response.name, respose.email, respose.officenumber)
+        const intern = new Engineer(response.id, response.name, response.email, response.school)
         Team.push(intern);
         mainMenu();
     })
