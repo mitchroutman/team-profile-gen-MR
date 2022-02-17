@@ -1,10 +1,11 @@
 //console.log("Hello world");
+const fs = require('fs');
 const inquirer = require('inquirer');
 const Manager = require('/Users/mitchellroutman/repository/homework/team-profile-gen-MR/src/Manager');
 const Engineer = require('/Users/mitchellroutman/repository/homework/team-profile-gen-MR/src/Engineer');
 const Intern = require('/Users/mitchellroutman/repository/homework/team-profile-gen-MR/src/Intern');
 const Employee = require('/Users/mitchellroutman/repository/homework/team-profile-gen-MR/src/Employee');
-const genreateHTML = require('./src/htmlgenerator');
+const htmlgenerator = require('./src/htmlgenerator')
 const Team = [];
 //
 
@@ -22,7 +23,7 @@ function mainMenu() {
                 newManager()
             } else if (selector === "Engineer") {
                 newEngineer()
-            } else (selector === "Intern") {
+            } else if (selector === "Intern") {
                 newIntern()
             }
         })
@@ -39,12 +40,7 @@ function addMore () {
             if(choice === "Yes") {
                 mainMenu()
             } else {
-                createNewFile()
-                    const htmlPage = generateHTML(Team);
-
-                    FileSystem.writeFile('index.html', htmlPage, (error) =>
-                    error ? console.log(error) : console.log('Generated HTML Team page')
-                    );
+                createNewFile() 
                 }
             }
         )
@@ -108,7 +104,7 @@ const newEngineer = () => {
     ]).then(response => {
         const engineer = new Engineer(response.id, response.name, response.email, response.git)
         Team.push(engineer);
-        mainMenu();
+        addMore();
     })
 }
 
@@ -135,11 +131,19 @@ const newIntern = () => {
             message: 'What is your Interns school?'
         }
     ]).then(response => {
-        const intern = new Engineer(response.id, response.name, response.email, response.school)
+        const intern = new Intern(response.id, response.name, response.email, response.school)
         Team.push(intern);
-        mainMenu();
+        addMore();
     })
 }
 
 mainMenu()
+
+function createNewFile() {
+    const htmlPage = htmlgenerator(Team);
+
+    fs.writeFile('index.html', htmlPage, (error) =>
+    error ? console.log(error) : console.log('Generated HTML Team page')
+    );
+}
 

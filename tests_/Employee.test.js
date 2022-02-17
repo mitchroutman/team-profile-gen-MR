@@ -14,3 +14,9 @@ test("when I pass the second parameter on new Employee, I create an name propert
     const testVal =  new Employee();
     expect(testVal.name).toBe(name)
 })
+
+test("when I pass the third parameter on new Employee, I create an email property with my new parameter", () => {
+    const testVal =  new Employee();
+    expect(testVal.email).toBe(email)
+})
+

@@ -19,63 +19,18 @@ function genreateHTML(response) {
         </header>
     
         <main>
-            <!-- CARD ONE -->
+            <div class="container">
+              <div class="row">
+              <div class="col"></div>
             ${generateManagerCards(response)}
-    
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title" id="manager name">${Manager.name}</h5>
-                  <p class="card-text" id="manager title">${Manager.getTitle}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item" id="mgrIdNo">Employee ID: ${Manager.id}</li>
-                  <li class="list-group-item" id="mgrEmail>Email: ${Manager.email}</li>
-                  <li class="list-group-item" id="mgrOfficeNo>Office Number: ${Manager.officenumber}</li>
-                </ul>
-              //   <div class="card-body">
-              //     <a href="#" class="card-link">Card link</a>
-              //     <a href="#" class="card-link">Another link</a>
-              //   </div>
-              // </div>
-    
-            <!-- CARD TWO -->
+              <div class="col"></div>
             ${generateEngineerCards(response)}
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title" id="engineer name>${Engineer.name}</h5>
-                  <p class="card-text" id="engineer title>${Engineer.getTitle}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item" id="engineer id">Employee ID: ${Engineer.id}</li>
-                  <li class="list-group-item" id="engineer github>Email: ${Engineer.email}</li>
-                  <li class="list-group-item"d="engineer github>GitHub: ${Engineer.github}</li>
-                </ul>
-              //   <div class="card-body">
-              //     <a href="#" class="card-link">Card link</a>
-              //     <a href="#" class="card-link">Another link</a>
-              //   </div>
-              // </div>
-    
-              <!-- CARD THREE -->
-              ${generateInternCards(response)}
-              <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title" id="name">${Intern.name}</h5>
-                  <p class="card-text" id="title">${Intern.getTitle}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item" id="id">Employee ID: ${Intern.id}</li>
-                  <li class="list-group-item">Email: ${Intern.email}</li>
-                  <li class="list-group-item">School; ${Intern.school}</li>
-                </ul>
-              //   <div class="card-body">
-              //     <a href="#" class="card-link">Card link</a>
-              //     <a href="#" class="card-link">Another link</a>
-              //   </div>
-              // </div>
+              <div class="w-100"></div>
+            ${generateInternCards(response)}
+              <div class="col"></div>
+              <div clas="col"></div>
+              </div>
+            </div>
     
         </main>
     
@@ -95,11 +50,69 @@ function generateManagerCards (arr) {
   for(i=0; i< arr.length; i++) {
     if(arr[i].getTitle() == "Manager") {
       managerCards += `
-      html here
-      ${arr[i].name}
+      <div class="card" style="width: 18rem;">
+      <img src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/glasses.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title" id="manager name">${arr[i].name}</h5>
+        <p class="card-text" id="manager title">Manager</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> Employee ID: ${arr[i].id}</li>
+        <li class="list-group-item"> Email: ${arr[i].email}</li>
+        <li class="list-group-item"> Office Number: ${arr[i].officenumber}</li>
+      </ul>
       `
     }
   }
   return managerCards
 }
+
+function generateEngineerCards (arr) {
+  let engineerCards = ``
+  console.log(arr)
+  for(i=0; i< arr.length; i++) {
+    if(arr[i].getTitle() == "Engineer") {
+      engineerCards += `
+      <div class="card" style="width: 18rem;">
+      <img src="https://www.seekpng.com/png/full/188-1886576_file-emoji-u1f4bb-svg-computer-emoji.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${arr[i].name}</h5>
+        <p class="card-text">Engineer</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> Employee ID: ${arr[i].id}</li>
+        <li class="list-group-item"> Email: ${arr[i].email}</li>
+        <li class="list-group-item"> GitHub: ${arr[i].github}</li>
+      </ul>
+
+      `
+    }
+  }
+  return engineerCards
+}
+
+function generateInternCards (arr) {
+  let internCards = ``
+  console.log(arr)
+  for(i=0; i< arr.length; i++) {
+    if(arr[i].getTitle() == "Intern") {
+      internCards += `
+      <div class="card" style="width: 18rem;">
+      <img src="https://www.pngfind.com/pngs/m/215-2152933_cup-mug-coffee-black-and-white-coffee-emoji.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title" id="name">${arr[i].name}</h5>
+        <p class="card-text" id="title">Intern</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> Employee ID: ${arr[i].id}</li>
+        <li class="list-group-item"> Email: ${arr[i].email}</li>
+        <li class="list-group-item"> School; ${arr[i].school}</li>
+      </ul>
+    
+      `
+    }
+  } 
+  return internCards
+}
+
 module.exports = genreateHTML;

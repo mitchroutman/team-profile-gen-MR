@@ -7,6 +7,8 @@ header {
     width: auto;
     background-color: red;
     color: white;
+    text-align: center;
+    border-color: aliceblue;
 }
 
 h1 {
